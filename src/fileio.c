@@ -72,7 +72,7 @@ void initializer(){
 
 void totext(pdata p,int robot1){
     int count=1;
-    char fichtxt[50]="a";
+    char fichtxt[1]="a";
     FILE *fp;
     printf("Choose file name to save the succession of all plays: ");
     fgets(fichtxt,sizeof(fichtxt),stdin);
