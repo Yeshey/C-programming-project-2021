@@ -14,9 +14,9 @@ void initializer(){
     Table table;
     pTable ptable = &table;
     ptable->table=NULL;
-    pdata list = NULL,listaux = NULL,listaux2 = NULL, pnew=NULL; // declare the connected list and friends
+    pdata list = NULL,listaux = NULL,listaux2 = NULL, pnew=NULL; //declare the connected list and friends
 
-    // Verify if we have to load the fich.bin
+    //Verify if we have to load the fich.bin
     FILE * fp = fopen("fich.bin","rb");
     if (fp == NULL){ fclose(fp); printf("error opening file, exiting\n"); exit(0); };
     fread(&tmp,sizeof(int),1,fp);
@@ -31,7 +31,7 @@ void initializer(){
             tmp=1;
         } while (loadopt!='Y' && loadopt!='N');
     }
-    if(loadopt=='Y'){   // Load fich.bin:
+    if(loadopt=='Y'){   //Load fich.bin:
         fread(&option1, sizeof(int), 1, fp);
         fread(&initdim,sizeof(initdim),1,fp);
         fread(pmaxplays,sizeof(maxplays),1,fp);
@@ -49,11 +49,13 @@ void initializer(){
             tmp=1;
         } while ( (fread(pnew, sizeof(data), 1, fp)) == 1);
         free(listaux);
-        listaux2->prox = NULL;  // eliminate last garbadge struct
+        listaux2->prox = NULL;  //eliminate last garbadge struct
+        //show(list);
         rebuild2Darray(ptable, list, initdim,&turn);
         printf("Resuming match against %s\n",option1==1 ? "random agent" : "another player");
     } else {
         initdim = ptable->nlin = ptable->ncol = intUniformRnd(3, 5);
+        //ptable->nlin = ptable->ncol = 3;
         ptable = summon2Darray(ptable, list);
         tmp=0;
         printf("Play against a random agent(1) or another player(2)?\n 1/2 -> ");
@@ -72,7 +74,7 @@ void initializer(){
 
 void totext(pdata p,int robot1){
     int count=1;
-    char fichtxt[1]="a";
+    char fichtxt[50]="a";
     FILE *fp;
     printf("Choose file name to save the succession of all plays: ");
     fgets(fichtxt,sizeof(fichtxt),stdin);
@@ -100,11 +102,11 @@ void pause(pTable ptable,pdata list,int robot1,int initdim,pmaxplays pmaxplays){
     };
     if (list==NULL){
         i=0;
-        fwrite(&i,sizeof(int),1,fp); // To indicate that there is no data to read
+        fwrite(&i,sizeof(int),1,fp); //To indicate that there is no data to read
         printf("no game data to save, aborting\n");
     } else {
         i=1;
-        fwrite(&i,sizeof(int),1,fp); // To indicate that there is data to read
+        fwrite(&i,sizeof(int),1,fp); //To indicate that there is data to read
         fwrite(&robot1,sizeof(robot1),1,fp);
         fwrite(&initdim,sizeof(initdim),1,fp);
         fwrite(pmaxplays,sizeof(maxplays),1,fp);
@@ -114,8 +116,8 @@ void pause(pTable ptable,pdata list,int robot1,int initdim,pmaxplays pmaxplays){
             list = list -> prox;
         }
     }
-    // Binary save:
-    // [Int flag wether there's valid data, 0 or 1][robot1][initdim][pmaxplays)][linked list]
+    //Binary save:  
+    //[Int flag wether there's valid data, 0 or 1][robot1][initdim][pmaxplays)][linked list]
     fclose(fp);
     end_game(ptable,list);
 }
@@ -128,7 +130,7 @@ void deactivatefichbin(){
         printf("failed to deactivate fich.bin, the file should be deleted manually\n");
     } else {
         int i=0;
-        fwrite(&i,sizeof(int),1,fp); // To indicate that there is no data to read
+        fwrite(&i,sizeof(int),1,fp); //To indicate that there is no data to read
     }
     fclose(fp);
     return;

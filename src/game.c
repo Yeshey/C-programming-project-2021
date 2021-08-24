@@ -15,6 +15,7 @@ void gameturn(pTable ptable, pdata list,pmaxplays pmaxplays,int robot1,int initd
 
     tableprint(ptable);
     printf("player %c won!\n",whosplaying(turn));
+    //show(list);
     totext(list,robot1);
     deactivatefichbin();
 

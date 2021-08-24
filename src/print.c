@@ -52,7 +52,6 @@ void tableprint(pTable ptable){
     //-----Print the table-----
 }
 
-// Just for debugging
 void show(pdata p){
     //Shows contents of connected list
     int count=1;
