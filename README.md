@@ -1,4 +1,4 @@
-# programming-project-2021
+# C-programming-project-2021
 Done in the context of the programming module in my university
 
 ## Game Rules
