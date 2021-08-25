@@ -85,7 +85,7 @@ pdata playoptions(pTable ptable, pdata list,pmaxplays pmaxplays,int turn,int rob
 
         case 4:
             printf("\tHow to play:\nValid inputs:\n\nline,column - Places the apropriate piece in the square with the given coordinates if possible\nExample: 1,2\tplaces piece in the first line second column\n\n");
-            printf("line,columnS - Places a stone in the square with the given coordinates if possible (max one per player)\nExample: 1,2R\tplaces rock in the first line second column\n\n");
+            printf("line,columnS - Places a stone in the square with the given coordinates if possible (max one per player)\nExample: 1,2S\tplaces rock in the first line second column\n\n");
             printf("C - Adds a column,\nL - Adds a line\n\t each player can play one of these two options twice per game\n\n");
             printf("Objective: compleate a line, column or diagonal of the same color (diagonal are only possible on square tables)\n");
             goback=1;
